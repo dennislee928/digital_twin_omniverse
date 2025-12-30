@@ -1,0 +1,44 @@
+# Physics Configuration Example
+#
+# This file demonstrates how to configure physics extensions
+# in your .kit file for USD Explorer applications.
+
+[dependencies]
+# PhysX Physics Extension Bundle
+# This adds a bundled set of physics extensions
+"omni.physx.bundle" = {}
+
+# Additional physics-related extensions (optional)
+# "omni.physx.debug" = {}  # Physics debugging tools
+# "omni.physx.visualization" = {}  # Physics visualization
+
+# Other required dependencies
+"omni.kit.tool.measure" = {}
+"omni.kit.window.property" = {}  # Required for physics property panel
+
+# Disable Fabric Scene Delegate
+# IMPORTANT: Fabric is incompatible with PhysX
+# You must set this to false to use physics simulation
+[settings.app.usdrt]
+useFabricSceneDelegate = false
+
+# Physics Stage Settings (optional)
+# These can also be set in the application UI via Window > Physics Stage Settings
+
+[settings.exts."omni.physx"]
+# Physics solver settings
+# solverType = "PBD"  # Position Based Dynamics
+# solverType = "TGS"  # Temporal Gauss-Seidel
+
+# Gravity settings (can be overridden per stage)
+# defaultGravity = -9.81  # m/s^2
+
+# Physics visualization (optional)
+# enableVisualization = true
+
+# Performance settings
+# maxSubSteps = 4
+# fixedTimeStep = 0.016666  # 60 FPS
+
+# Note: Most physics settings are per-stage and should be configured
+# via Window > Physics Stage Settings in the application UI

@@ -1,61 +1,87 @@
-# 範例代碼目錄
+# Examples Directory
 
-此目錄包含擴展開發和配置的範例代碼。
+This directory contains example code for extension development, configuration, and physics simulation.
 
-## 文件說明
+## Configuration Examples
 
-### 配置範例
+- **extension_config_example.kit** - Extension configuration example
+  - Shows how to configure extensions in .kit file
+  - Includes Review mode extensions configuration
+  - Demonstrates extension order control and disabling
 
-- **extension_config_example.kit** - 擴展配置範例
-  - 展示如何在 .kit 文件中配置擴展
-  - 包含 Review 模式擴展的配置
-  - 展示擴展順序控制和禁用方法
+- **physics_config_example.kit** - Physics configuration example
+  - PhysX extension setup
+  - Fabric Scene Delegate configuration
+  - Physics stage settings
 
-### 代碼範例
+## Code Examples
 
-- **custom_extension_example.py** - 自訂擴展範例
-  - 基本擴展結構
-  - USD 場景操作函數
-  - 自訂命令範例
-  - 輔助函數範例
+### Extension Development
 
-- **extension_integration_example.py** - 擴展整合範例
-  - 多擴展整合方法
-  - 擴展可用性檢查
-  - 事件監聽設置
-  - 擴展間通訊範例
+- **custom_extension_example.py** - Custom extension example
+  - Basic extension structure
+  - USD scene operations
+  - Custom command examples
+  - Helper functions
 
-## 使用方式
+- **extension_integration_example.py** - Extension integration example
+  - Multi-extension integration methods
+  - Extension availability checking
+  - Event listener setup
+  - Inter-extension communication
 
-### 1. 查看配置範例
+### Physics Simulation
+
+- **physics_setup_example.py** - Physics setup example
+  - Rigid body configuration
+  - Conveyor belt setup
+  - Box physics setup
+  - Surface velocity configuration
+  - Helper classes for physics operations
+
+## Usage
+
+### 1. View Configuration Examples
 
 ```bash
-# 查看擴展配置範例
+# View extension configuration
 cat examples/extension_config_example.kit
+
+# View physics configuration
+cat examples/physics_config_example.kit
 ```
 
-### 2. 使用代碼範例
+### 2. Use Code Examples
 
 ```python
-# 在您的擴展中導入和使用
+# Import and use extension helpers
 from examples.custom_extension_example import (
     get_stage,
     create_prim_at_position,
     duplicate_prim
 )
+
+# Import and use physics helpers
+from examples.physics_setup_example import (
+    PhysicsSetupHelper,
+    ConveyorBeltSetup,
+    BoxPhysicsSetup
+)
 ```
 
-### 3. 參考整合範例
+### 3. Reference Integration Examples
 
 ```python
-# 學習如何整合多個擴展
+# Learn how to integrate multiple extensions
 from examples.extension_integration_example import (
     ExtensionIntegrationExample,
     ExtensionCommunication
 )
 ```
 
-## 相關文檔
+## Related Documentation
 
-- [擴展開發指南](../EXTENSION_DEVELOPMENT_GUIDE.md)
-- [Review 模式擴展綜合指南](../REVIEW_EXTENSIONS_GUIDE.md)
+- [Extension Development Guide](../EXTENSION_DEVELOPMENT_GUIDE.md)
+- [Review Extensions Guide](../REVIEW_EXTENSIONS_GUIDE.md)
+- [Physics Simulation Guide](../PHYSICS_SIMULATION_GUIDE.md)
+- [Physics Best Practices](../PHYSICS_BEST_PRACTICES.md)
