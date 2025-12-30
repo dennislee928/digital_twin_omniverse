@@ -18,6 +18,8 @@ See [INDEX.md](INDEX.md) for the complete documentation index with all guides or
 -   **[USD Exploration Guide](USD_EXPLORATION_GUIDE.md)** - Understanding OpenUSD file structure and digital twin concepts
 -   **[USD Exploration Guide (EN)](USD_EXPLORATION_GUIDE_EN.md)** - English version
 -   **[USD Conversion Guide](USD_CONVERSION_GUIDE.md)** - Converting USD to USDA format
+-   **[Conversion Methods](CONVERSION_METHODS.md)** - All methods for converting USD files
+-   **[Kit Environment Conversion](KIT_ENVIRONMENT_CONVERSION.md)** - Converting in Omniverse Kit environment
 
 ### Asset Management
 
