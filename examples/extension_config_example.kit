@@ -1,0 +1,88 @@
+# 擴展配置範例
+# Extension Configuration Example
+#
+# 此文件展示如何在 .kit 文件中配置擴展
+# This file demonstrates how to configure extensions in .kit file
+
+[dependencies]
+# Review 模式擴展
+# Review Mode Extensions
+
+# Markup 擴展 - 添加註解和標記
+# Markup Extension - Add comments and annotations
+"omni.kit.tool.markup" = {}
+
+# Waypoint 擴展 - 保存和導航視圖
+# Waypoint Extension - Save and navigate views
+"omni.kit.waypoint.core" = {}
+"omni.kit.waypoint.playlist" = {}
+
+# Section 擴展 - 創建截面視圖
+# Section Extension - Create section views
+"omni.kit.tool.section" = {}
+
+# Measure 擴展 - 測量距離和角度
+# Measure Extension - Measure distances and angles
+"omni.kit.tool.measure" = {}
+
+# Variant Presenter 擴展 - 呈現和選擇變體
+# Variant Presenter Extension - Present and select variants
+"omni.kit.variant.presenter" = {}
+
+# 其他常用擴展
+# Other Common Extensions
+
+# 資產轉換
+"omni.kit.asset_converter" = {}
+
+# 瀏覽器
+"omni.kit.browser.asset" = {}
+"omni.kit.browser.sample" = {}
+
+# 視窗
+"omni.kit.window.stage" = {}
+"omni.kit.window.property" = {}
+"omni.kit.window.console" = {}
+
+# 工具
+"omni.kit.tool.asset_importer" = {}
+"omni.kit.tool.camera_playlist" = {}
+
+# 擴展順序控制
+# Extension Order Control
+# 使用 order 參數控制擴展載入順序
+# Use order parameter to control extension load order
+
+[dependencies]
+"omni.kit.tool.markup" = { order = 1000 }
+"omni.kit.waypoint.core" = { order = 2000 }
+"omni.kit.tool.section" = { order = 3000 }
+
+# 禁用擴展
+# Disable Extensions
+
+[settings.app.extensions]
+excluded = [
+    # "omni.kit.tool.markup",  # 取消註解以禁用 Markup 擴展
+    # "omni.kit.waypoint.core",  # 取消註解以禁用 Waypoint 擴展
+]
+
+# 擴展特定設定
+# Extension-Specific Settings
+
+[settings.exts."omni.kit.tool.markup"]
+# Markup 擴展設定
+# Markup extension settings
+enable_hotkeys = true
+show_icons = false
+
+[settings.exts."omni.kit.waypoint.core"]
+# Waypoint 擴展設定
+# Waypoint extension settings
+enable_hotkeys = true
+show_icons = false
+
+[settings.exts."omni.kit.tool.measure"]
+# Measure 擴展設定
+# Measure extension settings
+enable_hotkeys = true
