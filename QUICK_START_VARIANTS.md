@@ -4,7 +4,19 @@
 
 ### 1. 轉換 USD 為 USDA（如果尚未轉換）
 
+**推薦方法**：使用 USD Explorer 應用程式
+
+1. 開啟 USD Explorer
+2. 開啟 `Factory_Lite.usd`
+3. File > Save As > 選擇 USDA (ASCII) 格式
+
+**替代方法**：使用 Python 腳本（需要在 Omniverse 環境中）
+
 ```bash
+# 先檢查環境
+python check_usd_environment.py
+
+# 如果環境正確，執行轉換
 python convert_usd_to_usda.py Factory_Lite/Factory_Lite.usd
 ```
 

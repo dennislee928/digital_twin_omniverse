@@ -22,40 +22,81 @@ Alternative: Use USD Explorer application to convert files:
 
 import sys
 import os
+import platform
 
-# Try to import USD Python API
-try:
-    from pxr import Usd
-except ImportError:
+def check_environment():
+    """檢查是否在 Omniverse 環境中"""
+    omniverse_indicators = [
+        os.environ.get("OMNIVERSE_PATH"),
+        os.environ.get("KIT_PATH"),
+        os.environ.get("OMNIVERSE_APP_PATH"),
+    ]
+    return any(indicators for indicators in omniverse_indicators if indicators)
+
+def print_helpful_message():
+    """顯示有用的錯誤訊息和解決方案"""
     print("=" * 70)
     print("錯誤: 無法匯入 USD Python API (pxr)")
     print("Error: Cannot import USD Python API (pxr)")
     print("=" * 70)
     print()
-    print("此腳本需要 USD Python API，可在以下環境中使用：")
-    print("This script requires USD Python API, available in:")
+    
+    # 檢查環境
+    in_omniverse = check_environment()
+    if in_omniverse:
+        print("⚠️  檢測到 Omniverse 環境變數，但無法匯入 pxr 模組")
+        print("⚠️  Omniverse environment detected, but cannot import pxr module")
+        print()
+        print("可能的原因 / Possible reasons:")
+        print("  1. 需要在 Omniverse Kit 應用程式的 Python 環境中運行")
+        print("     Need to run in Omniverse Kit application's Python environment")
+        print("  2. USD 擴展未正確安裝")
+        print("     USD extension not properly installed")
+        print()
+    else:
+        print("此腳本需要 USD Python API，可在以下環境中使用：")
+        print("This script requires USD Python API, available in:")
+        print()
+        print("方法 1: 在 Omniverse Kit 應用程式中運行")
+        print("Method 1: Run in Omniverse Kit application")
+        print("  - 啟動您的 USD Explorer 應用程式")
+        print("    Launch your USD Explorer application")
+        print("  - 使用應用程式內建的 Python 控制台")
+        print("    Use the built-in Python console in the application")
+        print("  - 或使用 Kit 的命令列工具")
+        print("    Or use Kit's command-line tools")
+        print()
+        print("方法 2: 安裝 USD Python 綁定")
+        print("Method 2: Install USD Python bindings")
+        print("  - 從 https://github.com/PixarAnimationStudios/USD 編譯安裝")
+        print("    Build and install from https://github.com/PixarAnimationStudios/USD")
+        print("  - 或使用預編譯的 USD 發行版")
+        print("    Or use pre-compiled USD releases")
+        print()
+    
+    print("✅ 推薦方案 / Recommended Solution:")
+    print("  使用 USD Explorer 應用程式轉換檔案（最簡單的方法）")
+    print("  Use USD Explorer application to convert files (easiest method)")
     print()
-    print("1. NVIDIA Omniverse 應用程式環境")
-    print("   (在 Omniverse Kit 環境中運行此腳本)")
-    print("   NVIDIA Omniverse application environment")
-    print("   (Run this script from within Omniverse Kit environment)")
-    print()
-    print("2. 已安裝 USD Python 綁定的系統")
-    print("   System with USD Python bindings installed")
-    print()
-    print("替代方案 / Alternative:")
-    print("  使用 USD Explorer 應用程式轉換檔案：")
-    print("  Use USD Explorer application to convert files:")
-    print("  1. 在 USD Explorer 中開啟 USD 檔案")
-    print("     Open the USD file in USD Explorer")
-    print("  2. 選擇 File > Save As")
+    print("  步驟 / Steps:")
+    print("  1. 啟動 USD Explorer 應用程式")
+    print("     Launch USD Explorer application")
+    print("  2. 開啟 USD 檔案 (File > Open)")
+    print("     Open USD file (File > Open)")
+    print("  3. 選擇 File > Save As")
     print("     Select File > Save As")
-    print("  3. 選擇 USDA (ASCII) 格式")
-    print("     Choose USDA (ASCII) format")
+    print("  4. 選擇 USDA (ASCII) 格式並儲存")
+    print("     Choose USDA (ASCII) format and save")
     print()
-    print("詳細說明請參閱：VARIANT_PRESENTER_GUIDE.md")
-    print("For details, see: VARIANT_PRESENTER_GUIDE.md")
+    print("📖 詳細說明請參閱：VARIANT_PRESENTER_GUIDE.md")
+    print("📖 For details, see: VARIANT_PRESENTER_GUIDE.md")
     print("=" * 70)
+
+# Try to import USD Python API
+try:
+    from pxr import Usd
+except ImportError:
+    print_helpful_message()
     sys.exit(1)
 
 

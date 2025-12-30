@@ -20,10 +20,23 @@ OpenUSD 可以儲存多個資產變體，稱為 **variants**。**VariantSets** �
 
 ### 方法 B: 使用 Python 腳本
 
+**注意**：此腳本需要在 Omniverse 環境中運行，或已安裝 USD Python 綁定。
+
+首先檢查環境：
+
+```bash
+# 檢查 USD 環境
+python check_usd_environment.py
+```
+
+如果環境正確，執行轉換：
+
 ```bash
 # 在專案根目錄執行
 python convert_usd_to_usda.py Factory_Lite/Factory_Lite.usd
 ```
+
+**如果無法運行腳本**：請使用方法 A（USD Explorer 應用程式），這是最簡單可靠的方法。
 
 ## 步驟 2: 在 VS Code 中檢視 Variant 定義
 
