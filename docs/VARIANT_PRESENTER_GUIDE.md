@@ -20,10 +20,23 @@ OpenUSD 可以儲存多個資產變體，稱為 **variants**。**VariantSets** �
 
 ### 方法 B: 使用 Python 腳本
 
+**注意**：此腳本需要在 Omniverse 環境中運行，或已安裝 USD Python 綁定。
+
+首先檢查環境：
+
+```bash
+# 檢查 USD 環境
+python check_usd_environment.py
+```
+
+如果環境正確，執行轉換：
+
 ```bash
 # 在專案根目錄執行
 python convert_usd_to_usda.py Factory_Lite/Factory_Lite.usd
 ```
+
+**如果無法運行腳本**：請使用方法 A（USD Explorer 應用程式），這是最簡單可靠的方法。
 
 ## 步驟 2: 在 VS Code 中檢視 Variant 定義
 
@@ -58,8 +71,8 @@ Variant Presenter 是一個範例擴展，用於呈現和選擇變體，可以�
 
 您的自訂應用程式應該有一個 `.kit` 檔案。根據您使用的模板，可能位於：
 
-- 如果您使用 USD Explorer 模板：`<your_app_directory>/omni.usd_explorer.kit`
-- 或類似的位置
+-   如果您使用 USD Explorer 模板：`<your_app_directory>/omni.usd_explorer.kit`
+-   或類似的位置
 
 **注意**：如果您還沒有建立自訂應用程式，請先使用 USD Explorer 模板建立一個。
 
@@ -120,9 +133,10 @@ def "Factory_Equipment" (
 ```
 
 這表示：
-- 有一個名為 `equipmentType` 的變體集
-- 包含兩個變體：`TypeA` 和 `TypeB`
-- 每個變體引用不同的 USD 檔案
+
+-   有一個名為 `equipmentType` 的變體集
+-   包含兩個變體：`TypeA` 和 `TypeB`
+-   每個變體引用不同的 USD 檔案
 
 ## 變體的優勢
 
@@ -133,29 +147,32 @@ def "Factory_Equipment" (
 
 ## 學習更多
 
-- **Create a Variant Set** 主題：了解如何使用 OpenUSD 編寫變體集
-- [OpenUSD 官方文件](https://openusd.org/)
-- [Omniverse 文件](https://docs.omniverse.nvidia.com/)
+-   **Create a Variant Set** 主題：了解如何使用 OpenUSD 編寫變體集
+-   [OpenUSD 官方文件](https://openusd.org/)
+-   [Omniverse 文件](https://docs.omniverse.nvidia.com/)
 
 ## 疑難排解
 
 ### 問題：找不到 .kit 檔案
 
 **解決方案**：
-- 確認您已經從模板建立了自訂應用程式
-- 檢查應用程式安裝目錄
-- 查看 Omniverse Launcher 中的應用程式設定
+
+-   確認您已經從模板建立了自訂應用程式
+-   檢查應用程式安裝目錄
+-   查看 Omniverse Launcher 中的應用程式設定
 
 ### 問題：Variant Presenter 選單未出現
 
 **解決方案**：
-- 確認已正確添加 `"omni.kit.variant.presenter" = {}` 到 `.kit` 檔案
-- 確認已重新啟動應用程式
-- 檢查擴展是否已正確載入（Window > Extensions）
+
+-   確認已正確添加 `"omni.kit.variant.presenter" = {}` 到 `.kit` 檔案
+-   確認已重新啟動應用程式
+-   檢查擴展是否已正確載入（Window > Extensions）
 
 ### 問題：看不到變體選項
 
 **解決方案**：
-- 確認 `Factory_Lite.usd` 檔案包含變體定義
-- 在 VS Code 中搜尋 "variant" 確認檔案中有變體
-- 嘗試選擇場景中的不同 prim 來查看其變體
+
+-   確認 `Factory_Lite.usd` 檔案包含變體定義
+-   在 VS Code 中搜尋 "variant" 確認檔案中有變體
+-   嘗試選擇場景中的不同 prim 來查看其變體

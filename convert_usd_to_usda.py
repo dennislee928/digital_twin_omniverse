@@ -7,7 +7,7 @@ for easier inspection and learning purposes.
 
 Usage:
     python convert_usd_to_usda.py <input.usd> [output.usda]
-    
+
 If output filename is not provided, it will use the input filename with .usda extension.
 
 Note: This script requires the USD Python API (pxr module), which is available:
@@ -40,7 +40,7 @@ def print_helpful_message():
     print("Error: Cannot import USD Python API (pxr)")
     print("=" * 70)
     print()
-    
+
     # 檢查環境
     in_omniverse = check_environment()
     if in_omniverse:
@@ -73,23 +73,39 @@ def print_helpful_message():
         print("  - 或使用預編譯的 USD 發行版")
         print("    Or use pre-compiled USD releases")
         print()
-    
+
     print("✅ 推薦方案 / Recommended Solution:")
-    print("  使用 USD Explorer 應用程式轉換檔案（最簡單的方法）")
-    print("  Use USD Explorer application to convert files (easiest method)")
     print()
-    print("  步驟 / Steps:")
-    print("  1. 啟動 USD Explorer 應用程式")
-    print("     Launch USD Explorer application")
-    print("  2. 開啟 USD 檔案 (File > Open)")
-    print("     Open USD file (File > Open)")
-    print("  3. 選擇 File > Save As")
-    print("     Select File > Save As")
-    print("  4. 選擇 USDA (ASCII) 格式並儲存")
-    print("     Choose USDA (ASCII) format and save")
+    print("  方法 1: 使用輔助腳本（推薦）")
+    print("  Method 1: Use helper script (recommended)")
     print()
-    print("📖 詳細說明請參閱：VARIANT_PRESENTER_GUIDE.md")
-    print("📖 For details, see: VARIANT_PRESENTER_GUIDE.md")
+    if len(sys.argv) > 1:
+        print(f"    運行: python convert_via_explorer.py {sys.argv[1]}")
+        print(f"    Run: python convert_via_explorer.py {sys.argv[1]}")
+    else:
+        print("    運行: python convert_via_explorer.py <input.usd>")
+        print("    Run: python convert_via_explorer.py <input.usd>")
+    print()
+    print("    這會提供詳細的轉換步驟並生成 Kit 環境腳本")
+    print("    This will provide detailed conversion steps and generate Kit environment script")
+    print()
+    print("  方法 2: 手動使用 USD Explorer 應用程式")
+    print("  Method 2: Manual conversion via USD Explorer application")
+    print()
+    print("    步驟 / Steps:")
+    print("    1. 啟動 USD Explorer 應用程式")
+    print("       Launch USD Explorer application")
+    print("    2. 開啟 USD 檔案 (File > Open)")
+    print("       Open USD file (File > Open)")
+    print("    3. 選擇 File > Save As > USDA (ASCII) 格式")
+    print("       Select File > Save As > USDA (ASCII) format")
+    print()
+    print("  方法 3: 在 Omniverse Kit 環境中運行")
+    print("  Method 3: Run in Omniverse Kit environment")
+    print()
+    print("    參閱: docs/KIT_ENVIRONMENT_CONVERSION.md")
+    print("    See: docs/KIT_ENVIRONMENT_CONVERSION.md")
+    print()
     print("=" * 70)
 
 # Try to import USD Python API
@@ -103,7 +119,7 @@ except ImportError:
 def convert_usd_to_usda(input_path, output_path=None):
     """
     將 USD 檔案轉換為 USDA (ASCII) 格式
-    
+
     Args:
         input_path: 輸入的 .usd 檔案路徑
         output_path: 輸出的 .usda 檔案路徑（可選）
@@ -111,25 +127,25 @@ def convert_usd_to_usda(input_path, output_path=None):
     if not os.path.exists(input_path):
         print(f"錯誤: 找不到檔案 {input_path}")
         sys.exit(1)
-    
+
     # 如果沒有指定輸出路徑，使用輸入檔名加上 .usda 副檔名
     if output_path is None:
         base_name = os.path.splitext(input_path)[0]
         output_path = f"{base_name}.usda"
-    
+
     print(f"正在轉換: {input_path} -> {output_path}")
-    
+
     try:
         # 開啟 USD 檔案
         stage = Usd.Stage.Open(input_path)
         if not stage:
             print(f"✗ 錯誤: 無法開啟 USD 檔案 {input_path}")
             sys.exit(1)
-        
+
         # 匯出為 ASCII 格式 (.usda)
         stage.Export(output_path)
         print(f"✓ 轉換成功: {output_path}")
-            
+
     except Exception as e:
         print(f"✗ 轉換時發生錯誤: {e}")
         import traceback
@@ -144,10 +160,10 @@ def main():
         print("  python convert_usd_to_usda.py Factory_Lite/Factory_Lite.usd")
         print("  python convert_usd_to_usda.py Factory_Lite/SubUSDs/Vehicle_Hanger_Adjust.usd")
         sys.exit(1)
-    
+
     input_path = sys.argv[1]
     output_path = sys.argv[2] if len(sys.argv) > 2 else None
-    
+
     convert_usd_to_usda(input_path, output_path)
 
 
