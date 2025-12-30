@@ -8,6 +8,8 @@
 # without an express license agreement from NVIDIA CORPORATION or
 # its affiliates is strictly prohibited.
 
+import logging
+
 import carb
 import omni.ext
 import omni.kit.commands
@@ -30,8 +32,11 @@ class SunnySkyStage:
             try:
                 v = attr.Get()
                 return int(v) if isinstance(v, (int, float)) else 2411
-            except Exception:
-                pass
+            except Exception as e:
+                # Silently fallback to default version if attribute read fails
+                # This is expected behavior for optional attributes
+                logging.debug(f"Could not read usdluxVersion attribute: {e}")
+                pass  # nosec B110 - Intentional fallback to default
         return 2411
 
     def new_stage(self, _rootname, usd_context_name):
@@ -130,8 +135,11 @@ class SunnySkyStage:
                     attr = prim.GetAttribute("inputs:normalize")
                     if attr and attr.IsValid():
                         attr.Set(True)
-            except Exception:
-                pass
+            except Exception as e:
+                # Silently continue if normalize attribute cannot be set
+                # This is expected for prims that don't support this attribute
+                logging.debug(f"Could not set normalize attribute: {e}")
+                pass  # nosec B110 - Intentional fallback, attribute is optional
             prim.CreateAttribute(
                 "xformOp:scale", Sdf.ValueTypeNames.Double3, False
             ).Set(Gf.Vec3d(1, 1, 1))

@@ -85,7 +85,8 @@ class SetupExtension(omni.ext.IExt):
 
         settings = carb.settings.get_settings()
         # setup the Layout for your app
-        token = "${% raw %}{{% endraw %}{{ extension_name }}{% raw %}}{% endraw %}/layouts"
+        # Note: This is a template variable, not a hardcoded password
+        token = "${% raw %}{{% endraw %}{{ extension_name }}{% raw %}}{% endraw %}/layouts"  # nosec B105 - Template variable, not password
 
         layouts_path = carb.tokens.get_tokens_interface().resolve(token)
         layout_name = settings.get("/app/layout/name")

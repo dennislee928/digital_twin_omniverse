@@ -1,0 +1,18 @@
+# Snyk Configuration
+# This project is an OpenUSD/Omniverse digital twin project
+# It does not contain standard package manager files (package.json, requirements.txt, etc.)
+# that Snyk can scan for vulnerabilities.
+#
+# This project uses USD files and Omniverse Kit templates.
+# Dependency management is handled through Omniverse's packman system.
+#
+# For security scanning, please use Omniverse-specific tools:
+# - Omniverse Launcher security checks
+# - Packman dependency verification (./repo.sh verify)
+# - Python extension scanning (pip-audit, safety, bandit)
+# - USD file content review
+# - NVIDIA Product Security Portal: https://www.nvidia.com/en-us/security
+#
+# Note: Snyk will show an error because this project doesn't have standard
+# dependency files. This is expected and can be safely ignored.
+# See SNYK_NOTES.md (or SNYK_NOTES_EN.md) for detailed information.

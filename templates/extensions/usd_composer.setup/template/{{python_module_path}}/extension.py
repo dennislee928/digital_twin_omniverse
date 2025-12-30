@@ -12,7 +12,7 @@ import inspect
 import logging
 import os
 import platform
-import subprocess
+import subprocess  # nosec B404 - Used for launching trusted Omniverse Kit applications
 import sys
 import webbrowser
 from pathlib import Path
@@ -288,7 +288,9 @@ class CreateSetupExtension(omni.ext.IExt):
             else:
                 kwargs["creationflags"] = subprocess.CREATE_NEW_PROCESS_GROUP
 
-        subprocess.Popen(launch_args, **kwargs)
+        # Security: launch_args are constructed from trusted sources (kit_exe, kit_file_path)
+        # and settings. custom_args are validated before use. No user input is directly passed.
+        subprocess.Popen(launch_args, **kwargs)  # nosec B603 - Trusted sources only
 
     def _show_ui_docs(self):
         """show the omniverse ui documentation as an external Application"""

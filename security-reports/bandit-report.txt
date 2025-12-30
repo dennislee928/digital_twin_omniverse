@@ -1,0 +1,28 @@
+Run started:2025-12-30 02:37:17.978525+00:00
+
+Test results:
+	No issues identified.
+
+Code scanned:
+	Total lines of code: 2936
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 3
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 0
+Files skipped (6):
+	/Users/lipeichen/Documents/Untitled/digital_twin_omniverse/templates/extensions/basic_python/template/{{python_module_path}}/tests/test_hello.py (syntax error while parsing AST from file)
+	/Users/lipeichen/Documents/Untitled/digital_twin_omniverse/templates/extensions/basic_python_binding/template/python/impl/example_pybind_extension.py (syntax error while parsing AST from file)
+	/Users/lipeichen/Documents/Untitled/digital_twin_omniverse/templates/extensions/basic_python_binding/template/python/tests/test_pybind_example.py (syntax error while parsing AST from file)
+	/Users/lipeichen/Documents/Untitled/digital_twin_omniverse/templates/extensions/python_ui/template/{{python_module_path}}/tests/test_hello_world.py (syntax error while parsing AST from file)
+	/Users/lipeichen/Documents/Untitled/digital_twin_omniverse/templates/extensions/service.setup/template/{{python_module_path}}/tests/test_service.py (syntax error while parsing AST from file)
+	/Users/lipeichen/Documents/Untitled/digital_twin_omniverse/templates/extensions/usd_viewer.messaging/template/{{python_module_path}}/tests/messaging_tests.py (syntax error while parsing AST from file)
